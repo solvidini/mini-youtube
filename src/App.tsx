@@ -1,21 +1,27 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import './sass/main.scss'
 import Auth from './pages/Auth'
 import Home from './pages/Home'
+import { SearchProvider } from './contexts/search.context'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className='App'>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/auth' element={<Auth />} />
-          <Route path='*' element={<Navigate to='/' replace />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <SearchProvider>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/auth' element={<Auth />} />
+            <Route path='*' element={<Navigate to='/' replace />} />
+          </Routes>
+        </SearchProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   )
 }
 
