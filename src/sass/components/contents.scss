@@ -1,0 +1,51 @@
+.contents {
+  margin: 6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.snippet {
+  display: flex;
+  margin: 0.8rem;
+  color: $color-gray;
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  &__thumbnail {
+    cursor: pointer;
+  }
+
+  &__content {
+    padding: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  &__title {
+    cursor: pointer;
+    color: $color-white;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  &__date {
+    margin-bottom: 1.5rem;
+  }
+
+  &__channel,
+  &__channel:link,
+  &__channel:visited {
+    margin-left: 1rem;
+    color: $color-gray;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &__description {
+    margin-top: 1.5rem;
+  }
+}

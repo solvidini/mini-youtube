@@ -1,0 +1,16 @@
+.topbar {
+  position: fixed;
+  top: 0;
+
+  height: 6rem;
+  width: 100%;
+  padding: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $color-dark;
+
+  @include divider;
+}

@@ -3,7 +3,7 @@ import YouTubeSearchInput from '../YouTubeSearchInput'
 
 const Topbar = () => {
   return (
-    <div>
+    <div className='topbar'>
       <YouTubeSearchInput />
     </div>
   )

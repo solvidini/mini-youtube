@@ -44,3 +44,7 @@ $breakpoint argument choices:
     }
   }
 }
+
+@mixin divider {
+  border-bottom: 1px solid $color-dark-gray;
+}

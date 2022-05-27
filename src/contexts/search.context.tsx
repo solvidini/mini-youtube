@@ -17,7 +17,8 @@ export const SearchProvider: React.FC<{ children?: React.ReactNode }> = ({ child
   const [phrase, setPhrase] = React.useState<string>('')
 
   const searchQuery = useQuery<ISearchResponse, unknown>(
-    ['youtube', 'search', phrase],
+    // ['youtube', 'search', phrase],
+    ['youtube', 'search'],
     async (): Promise<ISearchResponse> => {
       const url = new URL(`${baseURL}/search`)
 
@@ -33,12 +34,12 @@ export const SearchProvider: React.FC<{ children?: React.ReactNode }> = ({ child
         },
       })
 
+      if (response.status === 403) throw new Error('Exceeded maximum requests per day.')
+
       return response.json()
     },
     { refetchOnWindowFocus: false },
   )
-
-  console.log('SEARCH', searchQuery)
 
   return (
     <YouTubeSearchContext.Provider

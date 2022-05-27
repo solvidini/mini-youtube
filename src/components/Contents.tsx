@@ -2,8 +2,8 @@ import React from 'react'
 import { useYouTubeSearch } from '../contexts/search.context'
 import Snippet from './Snippet'
 
-const Related = () => {
-  const { searchQuery, setSelectedVideo } = useYouTubeSearch()
+const Contents = () => {
+  const { searchQuery, setSelectedVideo, selectedVideo } = useYouTubeSearch()
 
   const choiceHandler = (id: string) => {
     setSelectedVideo(id)
@@ -13,7 +13,7 @@ const Related = () => {
   if (searchQuery.isLoading) return <div>Loading...</div>
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className='contents'>
       {searchQuery?.data?.items.map(item => (
         <Snippet key={item.id.videoId} {...item} onClick={choiceHandler} />
       ))}
@@ -21,4 +21,4 @@ const Related = () => {
   )
 }
 
-export default Related
+export default Contents

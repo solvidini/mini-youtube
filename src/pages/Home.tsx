@@ -1,17 +1,18 @@
 import React from 'react'
-import Related from '../components/Related'
-import Topbar from '../components/UI/Topbar'
+import Contents from '../components/Contents'
+import Topbar from '../components/ui/Topbar'
 import YouTubePlayer from '../components/YouTubePlayer'
+import Layout from '../containers/Layout'
 
 const Home = () => {
   return (
-    <div>
+    <Layout>
       <Topbar />
       <div>
         <YouTubePlayer />
-        <Related />
+        <Contents />
       </div>
-    </div>
+    </Layout>
   )
 }
 

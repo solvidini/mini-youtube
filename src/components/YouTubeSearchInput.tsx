@@ -1,6 +1,6 @@
 import React from 'react'
 import { useYouTubeSearch } from '../contexts/search.context'
-import SearchInput from './UI/SearchInput'
+import SearchInput from './ui/SearchInput'
 
 const YouTubeSearchInput = () => {
   const { phrase, setPhrase } = useYouTubeSearch()
