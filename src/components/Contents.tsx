@@ -16,7 +16,7 @@ const Contents = () => {
     return <div className='error-message'>Reached daily limit for search requests.</div>
 
   return (
-    <div className={generateClass('contents', { isPlayer: isPlayerActive })}>
+    <div className={generateClass('contents', { isPlayer: isPlayerActive })} data-testid='contents'>
       {searchQuery.isFetching
         ? Array.from(new Array(6)).map((_, index) => (
             <SnippetSkeleton key={`skeleton-${index}`} isPlayer={isPlayerActive} />

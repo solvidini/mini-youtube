@@ -1,5 +1,5 @@
-// export const API_KEY = 'AIzaSyB3nKA1tbpQqkgICsHh3zaB3enGQgEmF2A'
-export const API_KEY = 'AIzaSyDWwmGhpjhskhGwRaesIEX8_db6Ro2G6C8'
+export const API_KEY = 'AIzaSyB3nKA1tbpQqkgICsHh3zaB3enGQgEmF2A'
+// export const API_KEY = 'AIzaSyDWwmGhpjhskhGwRaesIEX8_db6Ro2G6C8'
 
 // export const API_KEY = 'AIzaSyBi_vwqaqk_x-YgXkcaMAFZkEkMgkhjzFQ'
 export const BASE_URL = 'https://www.googleapis.com/youtube/v3'

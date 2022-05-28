@@ -11,10 +11,13 @@ const Home = () => {
   return (
     <Layout>
       <Topbar />
-      <article className={`main-content${isPlayerActive ? ' main-content--with-player' : ''}`}>
+      <main
+        className={`main-content${isPlayerActive ? ' main-content--with-player' : ''}`}
+        data-testid='main'
+      >
         <YouTubePlayer />
         <Contents />
-      </article>
+      </main>
     </Layout>
   )
 }

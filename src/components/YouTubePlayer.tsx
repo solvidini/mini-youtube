@@ -16,12 +16,14 @@ const YouTubePlayer: React.FC = () => {
           frameBorder='0'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
           allowFullScreen
-          title='Embedded youtube'
+          title='Embedded YouTube video'
         />
       </div>
       <div className='video-content__info'>
-        <h3 className='video-content__title'>{selectedVideo.snippet.title}</h3>
-        <p className='video-content__date'>
+        <h3 className='video-content__title' data-testid='player-title'>
+          {selectedVideo.snippet.title}
+        </h3>
+        <p className='video-content__date' data-testid='player-date'>
           Added {getDateFormat(selectedVideo.snippet.publishTime)}
         </p>
         <a

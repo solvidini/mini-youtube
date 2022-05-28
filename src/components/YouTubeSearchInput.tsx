@@ -15,6 +15,7 @@ const YouTubeSearchInput = () => {
     setSelectedVideo(null)
   }
 
+  // I would also love to add suggestions to the YouTubeSearchInput later (I would also probably use local storage to store the previous searches)
   return <SearchInput value={phrase} onChange={handlePhraseChange} onSubmit={onSubmit} />
 }
 

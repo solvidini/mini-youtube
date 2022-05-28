@@ -1,9 +1,8 @@
 import React from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 import { baseParams, BASE_URL, ISearchItem, ISearchResponse } from '../api/youtube'
-import dummyData from '../utils/dummy-data.json'
 
-export interface ISearch {
+export interface IYouTubeSearch {
   phrase: string
   setPhrase: React.Dispatch<React.SetStateAction<string>>
   searchQuery: UseQueryResult<ISearchResponse, unknown>
@@ -12,11 +11,21 @@ export interface ISearch {
   isPlayerActive: boolean
 }
 
-const YouTubeSearchContext = React.createContext<ISearch>({} as ISearch)
+export interface IProviderDefaults {
+  selectedVideo?: ISearchItem
+  phrase?: string
+}
 
-export const SearchProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  const [selectedVideo, setSelectedVideo] = React.useState<ISearchItem | null>(null)
-  const [phrase, setPhrase] = React.useState<string>('')
+const YouTubeSearchContext = React.createContext<IYouTubeSearch>({} as IYouTubeSearch)
+
+export const YouTubeSearchProvider: React.FC<{
+  children?: React.ReactNode
+  value?: IProviderDefaults
+}> = ({ children, value }) => {
+  const [selectedVideo, setSelectedVideo] = React.useState<ISearchItem | null>(
+    value?.selectedVideo || null,
+  )
+  const [phrase, setPhrase] = React.useState<string>(value?.phrase || '')
 
   const searchQuery = useQuery<ISearchResponse, unknown>(
     ['youtube', 'search', selectedVideo],
@@ -45,8 +54,6 @@ export const SearchProvider: React.FC<{ children?: React.ReactNode }> = ({ child
     },
     { refetchOnWindowFocus: false },
   )
-
-  // searchQuery.data = dummyData
 
   return (
     <YouTubeSearchContext.Provider
