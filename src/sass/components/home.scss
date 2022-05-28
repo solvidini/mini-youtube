@@ -7,4 +7,8 @@
     flex-direction: column;
     align-items: center;
   }
+
+  @include respond(phone) {
+    margin: 1rem;
+  }
 }

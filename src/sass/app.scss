@@ -64,6 +64,11 @@ body {
   height: 100%;
 }
 
+.skeleton-auto-dimensions {
+  width: 100%;
+  height: auto;
+}
+
 .fa-magnifying {
   font-size: 1.6rem;
   color: $color-white;

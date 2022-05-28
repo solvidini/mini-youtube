@@ -15,6 +15,14 @@
 
   @include divider;
 
+  @include respond(tab-port) {
+    height: 7rem;
+  }
+
+  @include respond(phone) {
+    height: 8rem;
+  }
+
   &__logo {
     cursor: pointer;
     height: 100%;
@@ -26,6 +34,16 @@
     img {
       height: 80%;
       margin-right: 5px;
+
+      @include respond(phone) {
+        height: 70%;
+      }
+    }
+
+    span {
+      @include respond(phone) {
+        display: none;
+      }
     }
   }
 }

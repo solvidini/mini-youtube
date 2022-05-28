@@ -8,10 +8,10 @@ const SnippetSkeleton: React.FC<{ isPlayer: boolean }> = ({ isPlayer }) => (
     <div className={generateClass('snippet', { isPlayer })}>
       <div
         className={generateClass('snippet__thumbnail', { isPlayer })}
-        style={{ height: isPlayer ? '10rem' : '100%', width: '100%' }}
+        style={{ height: isPlayer ? '10rem' : 'auto', width: '100%' }}
       >
         <Skeleton
-          containerClassName='skeleton-max-dimensions'
+          containerClassName='skeleton-auto-dimensions'
           className='skeleton-max-dimensions'
         />
       </div>
@@ -19,7 +19,7 @@ const SnippetSkeleton: React.FC<{ isPlayer: boolean }> = ({ isPlayer }) => (
         <h3 className={generateClass('snippet__title', { isPlayer })} style={{ lineHeight: 1 }}>
           <Skeleton />
         </h3>
-        <p className='snippet__date' style={{ lineHeight: 1 }}>
+        <p className='snippet__date' style={{ lineHeight: 1, width: '40%' }}>
           <Skeleton />
         </p>
         {!isPlayer && (

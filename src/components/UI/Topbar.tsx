@@ -9,7 +9,8 @@ const Topbar = () => {
   return (
     <div className='topbar'>
       <div className='topbar__logo' onClick={() => setSelectedVideo(null)}>
-        <img src={YouTubeLogo} alt='Logo' /> Mini YouTube
+        <img src={YouTubeLogo} alt='Logo' />
+        <span>Mini YouTube</span>
       </div>
       <YouTubeSearchInput />
       <div />

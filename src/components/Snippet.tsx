@@ -1,5 +1,5 @@
 import React from 'react'
-import { channelURL, ISearchItem } from '../api/youtube'
+import { CHANNEL_URL, ISearchItem } from '../api/youtube'
 import useProgressiveImg from '../hooks/use-progressive-img'
 import { generateClass, getDateFormat } from '../utils/utils'
 
@@ -21,7 +21,7 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
       onClick(itemData)
       window.scrollTo(0, 0)
     } else {
-      window.open(channelURL + itemData.id.channelId, '_blank')
+      window.open(CHANNEL_URL + itemData.id.channelId, '_blank')
     }
   }
 
@@ -37,7 +37,7 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
           })}
           src={src}
           style={{
-            filter: blur ? 'blur(20px)' : 'none',
+            filter: blur ? 'blur(10px)' : 'none',
             transition: blur ? 'none' : 'filter 0.3s ease-out',
           }}
           onClick={handleClick}
@@ -49,7 +49,7 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
         </h3>
         <p className='snippet__date'>{getDateFormat(snippet.publishTime)}</p>
         <a
-          href={channelURL + snippet.channelId}
+          href={CHANNEL_URL + snippet.channelId}
           target='_blank'
           className={generateClass('snippet__channel', { isPlayer })}
           rel='noreferrer'

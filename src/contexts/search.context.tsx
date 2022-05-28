@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
-import { baseParams, baseURL, ISearchItem, ISearchResponse } from '../api/youtube'
+import { baseParams, BASE_URL, ISearchItem, ISearchResponse } from '../api/youtube'
 import dummyData from '../utils/dummy-data.json'
 
 export interface ISearch {
@@ -21,7 +21,7 @@ export const SearchProvider: React.FC<{ children?: React.ReactNode }> = ({ child
   const searchQuery = useQuery<ISearchResponse, unknown>(
     ['youtube', 'search', selectedVideo],
     async (): Promise<ISearchResponse> => {
-      const url = new URL(`${baseURL}/search`)
+      const url = new URL(`${BASE_URL}/search`)
 
       if (selectedVideo?.id?.videoId) {
         url.searchParams.append('relatedToVideoId', selectedVideo.id.videoId)
