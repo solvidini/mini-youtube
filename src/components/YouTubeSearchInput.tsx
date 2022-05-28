@@ -3,13 +3,19 @@ import { useYouTubeSearch } from '../contexts/search.context'
 import SearchInput from './ui/SearchInput'
 
 const YouTubeSearchInput = () => {
-  const { phrase, setPhrase } = useYouTubeSearch()
+  const { phrase, setPhrase, searchQuery, setSelectedVideo } = useYouTubeSearch()
 
   const handlePhraseChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPhrase(event.target.value)
   }
 
-  return <SearchInput value={phrase} onChange={handlePhraseChange} />
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    searchQuery.refetch()
+    setSelectedVideo(null)
+  }
+
+  return <SearchInput value={phrase} onChange={handlePhraseChange} onSubmit={onSubmit} />
 }
 
 export default YouTubeSearchInput

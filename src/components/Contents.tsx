@@ -1,22 +1,34 @@
 import React from 'react'
+import { ISearchItem } from '../api/youtube'
 import { useYouTubeSearch } from '../contexts/search.context'
+import { generateClass } from '../utils/utils'
 import Snippet from './Snippet'
+import SnippetSkeleton from './SnippetSkeleton'
 
 const Contents = () => {
-  const { searchQuery, setSelectedVideo, selectedVideo } = useYouTubeSearch()
+  const { searchQuery, setSelectedVideo, isPlayerActive } = useYouTubeSearch()
 
-  const choiceHandler = (id: string) => {
-    setSelectedVideo(id)
+  const choiceHandler = (itemData: ISearchItem) => {
+    setSelectedVideo(itemData)
   }
 
-  if (searchQuery.isError) return <div>Couldnt fetch data</div>
-  if (searchQuery.isLoading) return <div>Loading...</div>
+  if (searchQuery.isError)
+    return <div className='error-message'>Reached daily limit for search requests.</div>
 
   return (
-    <div className='contents'>
-      {searchQuery?.data?.items.map(item => (
-        <Snippet key={item.id.videoId} {...item} onClick={choiceHandler} />
-      ))}
+    <div className={generateClass('contents', { isPlayer: isPlayerActive })}>
+      {searchQuery.isFetching
+        ? Array.from(new Array(6)).map((_, index) => (
+            <SnippetSkeleton key={`skeleton-${index}`} isPlayer={isPlayerActive} />
+          ))
+        : searchQuery?.data?.items.map(item => (
+            <Snippet
+              key={item.id.videoId}
+              {...item}
+              onClick={choiceHandler}
+              isPlayer={isPlayerActive}
+            />
+          ))}
     </div>
   )
 }

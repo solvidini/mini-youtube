@@ -1,27 +1,65 @@
 import React from 'react'
 import { channelURL, ISearchItem } from '../api/youtube'
-import { getDateFormat } from '../utils/utils'
+import useProgressiveImg from '../hooks/use-progressive-img'
+import { generateClass, getDateFormat } from '../utils/utils'
 
-type SnippetProps = ISearchItem & { onClick: (id: string) => void }
+type SnippetProps = ISearchItem & {
+  onClick: (itemData: ISearchItem) => void
+  isPlayer: boolean
+}
 
-const Snippet: React.FC<SnippetProps> = ({ onClick, id, snippet }) => (
-  <div className='snippet'>
-    <img
-      className='snippet__thumbnail'
-      src={snippet.thumbnails.medium.url}
-      onClick={() => onClick(id.videoId)}
-    />
-    <div className='snippet__content'>
-      <h3 className='snippet__title' onClick={() => onClick(id.videoId)}>
-        {snippet.title}
-      </h3>
-      <p className='snippet__date'>{getDateFormat(snippet.publishTime)}</p>
-      <a href={channelURL + snippet.channelId} className='snippet__channel'>
-        {snippet.channelTitle}
-      </a>
-      <p className='snippet__description'>{snippet.description}</p>
+const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => {
+  const { snippet } = itemData
+  const [src, { blur }] = useProgressiveImg(
+    snippet?.thumbnails.default.url || '',
+    snippet?.thumbnails.medium.url || '',
+  )
+  const isChannel = !!itemData.id.channelId
+
+  const handleClick = () => {
+    if (!isChannel) {
+      onClick(itemData)
+      window.scrollTo(0, 0)
+    } else {
+      window.open(channelURL + itemData.id.channelId, '_blank')
+    }
+  }
+
+  if (!snippet) return null
+
+  return (
+    <div className={generateClass('snippet', { isPlayer })}>
+      <div className={generateClass('snippet__thumbnail', { isPlayer })}>
+        <img
+          className={generateClass('snippet__thumbnail-img', {
+            isPlayer,
+            isChannel,
+          })}
+          src={src}
+          style={{
+            filter: blur ? 'blur(20px)' : 'none',
+            transition: blur ? 'none' : 'filter 0.3s ease-out',
+          }}
+          onClick={handleClick}
+        />
+      </div>
+      <div className='snippet__content'>
+        <h3 className={generateClass('snippet__title', { isPlayer })} onClick={handleClick}>
+          {snippet.title}
+        </h3>
+        <p className='snippet__date'>{getDateFormat(snippet.publishTime)}</p>
+        <a
+          href={channelURL + snippet.channelId}
+          target='_blank'
+          className={generateClass('snippet__channel', { isPlayer })}
+          rel='noreferrer'
+        >
+          {snippet.channelTitle}
+        </a>
+        {!isPlayer && <p className='snippet__description'>{snippet.description}</p>}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Snippet

@@ -3,15 +3,18 @@ import Contents from '../components/Contents'
 import Topbar from '../components/ui/Topbar'
 import YouTubePlayer from '../components/YouTubePlayer'
 import Layout from '../containers/Layout'
+import { useYouTubeSearch } from '../contexts/search.context'
 
 const Home = () => {
+  const { isPlayerActive } = useYouTubeSearch()
+
   return (
     <Layout>
       <Topbar />
-      <div>
+      <article className={`main-content${isPlayerActive ? ' main-content--with-player' : ''}`}>
         <YouTubePlayer />
         <Contents />
-      </div>
+      </article>
     </Layout>
   )
 }

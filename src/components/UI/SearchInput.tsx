@@ -1,13 +1,18 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 
 const SearchInput: React.FC<{
   value: string
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
-}> = ({ value, onChange }) => (
-  <div className='search-input-container'>
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+}> = ({ value, onChange, onSubmit }) => (
+  <form className='search-input-container' onSubmit={onSubmit}>
     <input type='search' value={value} onChange={onChange} placeholder='Search...' />
-    <button>X</button>
-  </div>
+    <button type='submit'>
+      <FontAwesomeIcon className='fa-magnifying' icon={faMagnifyingGlass} />
+    </button>
+  </form>
 )
 
 export default SearchInput

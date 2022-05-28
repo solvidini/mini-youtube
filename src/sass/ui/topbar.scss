@@ -1,0 +1,31 @@
+.topbar {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+
+  height: 6rem;
+  width: 100%;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: $color-dark;
+
+  @include divider;
+
+  &__logo {
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+    font-size: 1.6rem;
+
+    img {
+      height: 80%;
+      margin-right: 5px;
+    }
+  }
+}
