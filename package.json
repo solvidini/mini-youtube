@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "Samuel Kędziora <contact@samuelk.pl>",
   "private": false,
+  "homepage": "https://ssazero.github.io/mini-youtube/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
@@ -16,6 +17,7 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "gh-pages": "^4.0.0",
     "lodash": "^4.17.21",
     "nock": "^13.2.4",
     "react": "^18.1.0",
@@ -36,7 +38,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .jsx,.tsx .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
