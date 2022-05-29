@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, HashRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 import './sass/main.scss'
@@ -11,7 +11,7 @@ const queryClient = new QueryClient()
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <QueryClientProvider client={queryClient}>
         <YouTubeSearchProvider>
           <Routes>
@@ -21,7 +21,7 @@ function App() {
           </Routes>
         </YouTubeSearchProvider>
       </QueryClientProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
