@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { IProviderDefaults, YouTubeSearchProvider } from '../contexts/search.context'
 import YouTubePlayer from './YouTubePlayer'

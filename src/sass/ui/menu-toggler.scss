@@ -1,0 +1,10 @@
+.menu-toggler {
+  cursor: pointer;
+  margin: 0 1rem;
+  height: 100%;
+
+  &__icon {
+    color: $color-white;
+    font-size: 2.2rem;
+  }
+}

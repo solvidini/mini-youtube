@@ -4,9 +4,15 @@
 @import './containers/layout';
 @import './app';
 
-@import './components/contents';
 @import './components/home';
+@import './components/auth';
+@import './components/contents';
 @import './components/youtube-player';
+@import './components/snippet';
+@import './components/menu-modal';
 
 @import './ui/topbar';
-@import './ui/searchInput';
+@import './ui/search-input';
+@import './ui/menu-toggler';
+@import './ui/backdrop';
+@import './ui/modal';

@@ -1,0 +1,34 @@
+.search-input-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  input {
+    @include input;
+  }
+
+  button {
+    cursor: pointer;
+    width: 10%;
+    outline: none;
+
+    background-color: $color-dark-gray;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0 4px 4px 0;
+
+    @include respond(tab-port) {
+      width: 20%;
+    }
+    @include respond(phone) {
+      width: 30%;
+    }
+
+    &:active {
+      box-shadow: inset 0 0 0.5rem $color-eclipse;
+    }
+  }
+}

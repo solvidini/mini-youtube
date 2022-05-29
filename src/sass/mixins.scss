@@ -48,3 +48,24 @@ $breakpoint argument choices:
 @mixin divider {
   border-bottom: 1px solid $color-dark-gray;
 }
+
+@mixin input {
+  font-family: Roboto;
+  padding: 1rem 0.6rem;
+  font-size: 16px;
+  width: 100%;
+
+  color: rgba($color-white, 0.9);
+  outline: none;
+  background-color: $color-eclipse;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: 1px solid $color-dark-gray;
+  border-radius: 4px 0 0 4px;
+
+  &:focus {
+    border: 1px solid $color-blue;
+  }
+}

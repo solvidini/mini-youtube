@@ -24,6 +24,17 @@
   }
 
   &__logo {
+    flex-basis: 20%;
+    text-align: start;
+
+    @include respond(tab-port) {
+      flex-basis: 25%;
+    }
+
+    @include respond(phone) {
+      flex-basis: 20%;
+    }
+
     cursor: pointer;
     height: 100%;
     display: flex;
@@ -44,6 +55,20 @@
       @include respond(phone) {
         display: none;
       }
+    }
+  }
+
+  &__middle {
+    flex: 1;
+    text-align: center;
+  }
+
+  &__menu {
+    flex-basis: 20%;
+    text-align: end;
+
+    @include respond(tab-port) {
+      flex-basis: 12%;
     }
   }
 }

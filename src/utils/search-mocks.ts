@@ -1,4 +1,4 @@
-import { ISearchResponse } from '../api/youtube'
+import { ISearchResponse } from '../api/youtube-types'
 
 // Mocked response used for testing purposes and also as dummy data
 export const youTubeResponse: ISearchResponse = {

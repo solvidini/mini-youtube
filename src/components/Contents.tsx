@@ -1,5 +1,5 @@
 import React from 'react'
-import { ISearchItem } from '../api/youtube'
+import { ISearchItem } from '../api/youtube-types'
 import { useYouTubeSearch } from '../contexts/search.context'
 import { generateClass } from '../utils/utils'
 import Snippet from './Snippet'

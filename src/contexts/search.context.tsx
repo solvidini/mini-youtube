@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
-import { baseParams, BASE_URL, ISearchItem, ISearchResponse } from '../api/youtube'
+import { baseParams, BASE_URL } from '../api/youtube'
+import { ISearchItem, ISearchResponse } from '../api/youtube-types'
 
 export interface IYouTubeSearch {
   phrase: string

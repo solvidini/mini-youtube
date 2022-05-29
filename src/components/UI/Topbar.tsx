@@ -2,18 +2,31 @@ import React from 'react'
 import YouTubeSearchInput from '../YouTubeSearchInput'
 import YouTubeLogo from '../../assets/youtube-logo.png'
 import { useYouTubeSearch } from '../../contexts/search.context'
+import MenuToggler from './MenuToggler'
+import MenuModal from '../MenuModal'
+import { useNavigate } from 'react-router-dom'
 
-const Topbar = () => {
+const Topbar: React.FC<{ showSearchInput?: boolean }> = ({ showSearchInput = true }) => {
+  const navigate = useNavigate()
+  const [showModal, setShowModal] = React.useState<boolean>(false)
   const { setSelectedVideo } = useYouTubeSearch()
+
+  const handleLogoClick = () => {
+    setSelectedVideo(null)
+    navigate('/')
+  }
 
   return (
     <div className='topbar'>
-      <div className='topbar__logo' onClick={() => setSelectedVideo(null)}>
+      <div className='topbar__logo' onClick={handleLogoClick}>
         <img src={YouTubeLogo} alt='Logo' />
         <span>Mini YouTube</span>
       </div>
-      <YouTubeSearchInput />
-      <div />
+      <div className='topbar__middle'>{showSearchInput && <YouTubeSearchInput />}</div>
+      <div className='topbar__menu'>
+        <MenuToggler onClick={() => setShowModal(true)} />
+      </div>
+      <MenuModal show={showModal} onClose={() => setShowModal(false)} />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
-import { CHANNEL_URL, ISearchItem } from '../api/youtube'
+import { CHANNEL_URL } from '../api/youtube'
+import { ISearchItem } from '../api/youtube-types'
 import useProgressiveImg from '../hooks/use-progressive-img'
 import { generateClass, getDateFormat } from '../utils/utils'
 
@@ -18,8 +19,8 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
 
   const handleClick = () => {
     if (!isChannel) {
-      onClick(itemData)
       window.scrollTo(0, 0)
+      onClick(itemData)
     } else {
       window.open(CHANNEL_URL + itemData.id.channelId, '_blank')
     }
