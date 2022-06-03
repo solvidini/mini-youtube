@@ -23,8 +23,13 @@
     @include respond(tab-port) {
       width: 20%;
     }
+
     @include respond(phone) {
       width: 30%;
+    }
+
+    &:focus {
+      outline: 1px solid $color-blue;
     }
 
     &:active {

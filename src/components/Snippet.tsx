@@ -1,4 +1,3 @@
-import React from 'react'
 import { CHANNEL_URL } from '../api/youtube'
 import { ISearchItem } from '../api/youtube-types'
 import useProgressiveImg from '../hooks/use-progressive-img'

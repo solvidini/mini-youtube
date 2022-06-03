@@ -1,4 +1,3 @@
-import React from 'react'
 import { ISearchItem } from '../api/youtube-types'
 import { useYouTubeSearch } from '../contexts/search.context'
 import { generateClass } from '../utils/utils'
@@ -23,8 +22,11 @@ const Contents = () => {
           ))
         : searchQuery?.data?.items.map(item => (
             <Snippet
-              key={item.id.videoId}
-              {...item}
+              key={item.id.videoId || item.id.channelId}
+              id={item.id}
+              etag={item.etag}
+              kind={item.kind}
+              snippet={item.snippet}
               onClick={choiceHandler}
               isPlayer={isPlayerActive}
             />

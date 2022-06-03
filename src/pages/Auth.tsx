@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Topbar from '../components/ui/Topbar'
 import Layout from '../containers/Layout'
 
-const Home = () => {
+const Auth = () => {
   const [credential, setCredential] = React.useState<string>('')
 
   const handleCredentialChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,4 +41,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Auth

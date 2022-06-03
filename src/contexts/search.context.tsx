@@ -12,16 +12,11 @@ export interface IYouTubeSearch {
   isPlayerActive: boolean
 }
 
-export interface IProviderDefaults {
-  selectedVideo?: ISearchItem
-  phrase?: string
-}
-
 const YouTubeSearchContext = React.createContext<IYouTubeSearch>({} as IYouTubeSearch)
 
 export const YouTubeSearchProvider: React.FC<{
   children?: React.ReactNode
-  value?: IProviderDefaults
+  value?: Partial<IYouTubeSearch>
 }> = ({ children, value }) => {
   const [selectedVideo, setSelectedVideo] = React.useState<ISearchItem | null>(
     value?.selectedVideo || null,

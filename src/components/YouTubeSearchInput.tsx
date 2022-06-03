@@ -1,4 +1,3 @@
-import React from 'react'
 import { useYouTubeSearch } from '../contexts/search.context'
 import SearchInput from './ui/SearchInput'
 

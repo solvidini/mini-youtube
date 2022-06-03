@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "jsx": "react-jsx",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,8 +14,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": true
   },
   "include": ["src", "src/contexts/.context.tsx"]
 }

@@ -1,0 +1,71 @@
+[33mcommit f0946907acde0994243ac76426f313fca20061d3[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Fri Jun 3 23:00:10 2022 +0200
+
+    Corrections after CR
+
+[33mcommit 39dba80bd238f56b26fc8e8b3f65823814c1f800[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sun May 29 03:26:41 2022 +0200
+
+    Changed router to hash
+
+[33mcommit be162f701ea8c289283c9e9357ce91ef7558995a[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sun May 29 02:05:49 2022 +0200
+
+    API cleanup
+
+[33mcommit cb5a603db64484c4e56d634c74c70fd499ef8689[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sun May 29 02:00:51 2022 +0200
+
+    Cleanup and added Auth view
+
+[33mcommit eab82cdb4b4e820eed4f707a861f735c9f94d061[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sat May 28 21:17:05 2022 +0200
+
+    Updated README and added gh-pages
+
+[33mcommit 002caaffa46300017e812fc0e2b9e5f6fd56f22e[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sat May 28 21:07:23 2022 +0200
+
+    Little adjustments and unit tests
+
+[33mcommit 89976c937d4d93ed0e951756fdf85a9a3cef9734[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sat May 28 17:00:43 2022 +0200
+
+    Added responsiveness
+
+[33mcommit 3050883b992c5719c590904eabf1a1ab48ecb566[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Sat May 28 16:04:25 2022 +0200
+
+    Improved search context, finished basic layout
+
+[33mcommit 86eb755052480c1f91547c0347abdadd40d931b6[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Fri May 27 04:53:16 2022 +0200
+
+    Working on UI/UX
+
+[33mcommit 002e16a95fa7ce4138474e5f8a83698151c9d319[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Thu May 26 23:42:52 2022 +0200
+
+    Implemented basic structure and YouTube search context
+
+[33mcommit e93c00da7b0ed99430a7a7cea6b3b9087cb3c152[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Thu May 26 19:37:38 2022 +0200
+
+    Initial configuration done
+
+[33mcommit e4dc33b235e43c1bb4f69d07defa207ad228ebb2[m
+Author: Samuel Kedziora <samukedo@gmail.com>
+Date:   Thu May 26 18:55:42 2022 +0200
+
+    Initialize project using Create React App

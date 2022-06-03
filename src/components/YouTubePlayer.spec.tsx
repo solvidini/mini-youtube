@@ -1,13 +1,12 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { IProviderDefaults, YouTubeSearchProvider } from '../contexts/search.context'
+import { IYouTubeSearch, YouTubeSearchProvider } from '../contexts/search.context'
 import YouTubePlayer from './YouTubePlayer'
 import { youTubeResponse } from '../utils/search-mocks'
 
 const queryClient = new QueryClient()
 
-const renderWithWrapper = (value?: IProviderDefaults) =>
+const renderWithWrapper = (value?: Partial<IYouTubeSearch>) =>
   render(
     <QueryClientProvider client={queryClient}>
       <YouTubeSearchProvider value={value}>

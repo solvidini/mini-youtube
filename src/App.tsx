@@ -1,4 +1,3 @@
-import React from 'react'
 import { Routes, Route, Navigate, HashRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 

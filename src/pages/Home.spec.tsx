@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { YouTubeSearchProvider } from '../contexts/search.context'

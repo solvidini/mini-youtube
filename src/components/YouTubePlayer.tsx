@@ -1,4 +1,3 @@
-import React from 'react'
 import { CHANNEL_URL, EMBED_URL } from '../api/youtube'
 import { useYouTubeSearch } from '../contexts/search.context'
 import { getDateFormat } from '../utils/utils'
