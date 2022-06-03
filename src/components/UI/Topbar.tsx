@@ -19,7 +19,14 @@ const Topbar: React.FC<{ showSearchInput?: boolean }> = ({ showSearchInput = tru
   return (
     <div className='topbar'>
       <div className='topbar__logo' onClick={handleLogoClick}>
-        <img src={YouTubeLogo} alt='Logo' />
+        <img
+          src={YouTubeLogo}
+          alt='Logo'
+          tabIndex={0}
+          onKeyUp={event => {
+            if (event.code === 'Enter') handleLogoClick()
+          }}
+        />
         <span>Mini YouTube</span>
       </div>
       <div className='topbar__middle'>{showSearchInput && <YouTubeSearchInput />}</div>

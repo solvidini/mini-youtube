@@ -29,7 +29,14 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
 
   return (
     <div className={generateClass('snippet', { isPlayer })}>
-      <div className={generateClass('snippet__thumbnail', { isPlayer })}>
+      <div
+        className={generateClass('snippet__thumbnail', { isPlayer })}
+        onClick={handleClick}
+        onKeyUp={event => {
+          if (event.code === 'Enter') handleClick()
+        }}
+        tabIndex={0}
+      >
         <img
           className={generateClass('snippet__thumbnail-img', {
             isPlayer,
@@ -40,7 +47,6 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
             filter: blur ? 'blur(10px)' : 'none',
             transition: blur ? 'none' : 'filter 0.3s ease-out',
           }}
-          onClick={handleClick}
         />
       </div>
       <div className='snippet__content'>
