@@ -1,6 +1,6 @@
 # Mini YouTube
 
-Small application using YouTube API.
+A small YouTube-like app that uses it's API.
 
 ## Technologies
 
