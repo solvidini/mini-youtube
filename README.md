@@ -1,6 +1,6 @@
 # Mini YouTube
 
-A small YouTube-like app that uses it's API.
+A small YouTube-like app which uses YouTube Data API v3.
 
 ## Technologies
 
@@ -15,7 +15,7 @@ Main technologies I used to create this app:
 
 ## Live
 
-https://ssazero.github.io/mini-youtube/
+https://solvidini.github.io/mini-youtube/
 
 ## Author
 
