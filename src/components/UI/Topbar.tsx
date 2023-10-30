@@ -1,14 +1,16 @@
-import React from 'react'
-import YouTubeSearchInput from '../YouTubeSearchInput'
-import YouTubeLogo from '../../assets/youtube-logo.png'
-import { useYouTubeSearch } from '../../contexts/search.context'
-import MenuToggler from './MenuToggler'
-import MenuModal from '../MenuModal'
+import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Topbar: React.FC<{ showSearchInput?: boolean }> = ({ showSearchInput = true }) => {
+import { YouTubeSearchInput } from '../YouTubeSearchInput'
+import { useYouTubeSearch } from '../../contexts/search-context'
+import { MenuToggler } from './MenuToggler'
+import { MenuModal } from '../MenuModal'
+
+import YouTubeLogo from '../../assets/youtube-logo.png'
+
+export const Topbar: FC<{ showSearchInput?: boolean }> = ({ showSearchInput = true }) => {
   const navigate = useNavigate()
-  const [showModal, setShowModal] = React.useState<boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
   const { setSelectedVideo } = useYouTubeSearch()
 
   const handleLogoClick = () => {
@@ -37,5 +39,3 @@ const Topbar: React.FC<{ showSearchInput?: boolean }> = ({ showSearchInput = tru
     </div>
   )
 }
-
-export default Topbar

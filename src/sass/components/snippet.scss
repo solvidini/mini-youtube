@@ -17,7 +17,7 @@
     flex-direction: column;
   }
 
-  &--with-player {
+  &--player {
     font-size: 1.2rem;
 
     @include respond(tab-port) {
@@ -42,7 +42,7 @@
       min-height: 20rem;
     }
 
-    &--with-player {
+    &--player {
       flex-basis: 40%;
 
       @include respond(phone) {
@@ -77,7 +77,7 @@
     font-weight: 400;
     margin-bottom: 0.5rem;
 
-    &--with-player {
+    &--player {
       font-size: 1.2rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -107,7 +107,7 @@
       color: $color-white;
     }
 
-    &--with-player {
+    &--player {
       margin-top: 5px;
     }
   }

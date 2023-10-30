@@ -1,27 +1,36 @@
-import React from 'react'
+import React, {
+  createContext,
+  Dispatch,
+  FC,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
-import { baseParams, BASE_URL } from '../api/youtube'
+
+import { baseParams, BASE_URL } from '../config/config'
 import { ISearchItem, ISearchResponse } from '../api/youtube-types'
 
 export interface IYouTubeSearch {
   phrase: string
-  setPhrase: React.Dispatch<React.SetStateAction<string>>
+  setPhrase: Dispatch<SetStateAction<string>>
   searchQuery: UseQueryResult<ISearchResponse, unknown>
   selectedVideo: ISearchItem | null
-  setSelectedVideo: React.Dispatch<React.SetStateAction<ISearchItem | null>>
+  setSelectedVideo: Dispatch<SetStateAction<ISearchItem | null>>
   isPlayerActive: boolean
 }
 
-const YouTubeSearchContext = React.createContext<IYouTubeSearch>({} as IYouTubeSearch)
+const YouTubeSearchContext = createContext<IYouTubeSearch>({} as IYouTubeSearch)
 
-export const YouTubeSearchProvider: React.FC<{
-  children?: React.ReactNode
+export const YouTubeSearchProvider: FC<{
+  children?: ReactNode
   value?: Partial<IYouTubeSearch>
 }> = ({ children, value }) => {
-  const [selectedVideo, setSelectedVideo] = React.useState<ISearchItem | null>(
+  const [selectedVideo, setSelectedVideo] = useState<ISearchItem | null>(
     value?.selectedVideo || null,
   )
-  const [phrase, setPhrase] = React.useState<string>(value?.phrase || '')
+  const [phrase, setPhrase] = useState<string>(value?.phrase || '')
 
   const searchQuery = useQuery<ISearchResponse, unknown>(
     ['youtube', 'search', selectedVideo],
@@ -29,7 +38,8 @@ export const YouTubeSearchProvider: React.FC<{
       const url = new URL(`${BASE_URL}/search`)
 
       if (selectedVideo?.id?.videoId) {
-        url.searchParams.append('relatedToVideoId', selectedVideo.id.videoId)
+        // Unfortunately this is now deprecated
+        // url.searchParams.append('relatedToVideoId', selectedVideo.id.videoId)
         url.searchParams.append('type', 'video')
       } else {
         url.searchParams.append('q', phrase)
@@ -67,4 +77,4 @@ export const YouTubeSearchProvider: React.FC<{
   )
 }
 
-export const useYouTubeSearch = () => React.useContext(YouTubeSearchContext)
+export const useYouTubeSearch = () => useContext(YouTubeSearchContext)

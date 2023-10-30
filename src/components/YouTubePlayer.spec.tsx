@@ -1,7 +1,9 @@
-import { render, screen } from '@testing-library/react'
+import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { IYouTubeSearch, YouTubeSearchProvider } from '../contexts/search.context'
-import YouTubePlayer from './YouTubePlayer'
+import { render, screen } from '@testing-library/react'
+
+import { IYouTubeSearch, YouTubeSearchProvider } from '../contexts/search-context'
+import { YouTubePlayer } from './YouTubePlayer'
 import { youTubeResponse } from '../utils/search-mocks'
 
 const queryClient = new QueryClient()

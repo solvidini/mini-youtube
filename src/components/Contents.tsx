@@ -1,10 +1,12 @@
-import { ISearchItem } from '../api/youtube-types'
-import { useYouTubeSearch } from '../contexts/search.context'
-import { generateClass } from '../utils/utils'
-import Snippet from './Snippet'
-import SnippetSkeleton from './SnippetSkeleton'
+import React from 'react'
 
-const Contents = () => {
+import { ISearchItem } from '../api/youtube-types'
+import { useYouTubeSearch } from '../contexts/search-context'
+import { Snippet } from './Snippet'
+import { SnippetSkeleton } from './SnippetSkeleton'
+import classNames from 'classnames'
+
+export const Contents = () => {
   const { searchQuery, setSelectedVideo, isPlayerActive } = useYouTubeSearch()
 
   const choiceHandler = (itemData: ISearchItem) => {
@@ -15,12 +17,17 @@ const Contents = () => {
     return <div className='error-message'>Reached daily limit for search requests.</div>
 
   return (
-    <div className={generateClass('contents', { isPlayer: isPlayerActive })} data-testid='contents'>
+    <div
+      className={classNames('contents', {
+        'contents--player': isPlayerActive,
+      })}
+      data-testid='contents'
+    >
       {searchQuery.isFetching
-        ? Array.from(new Array(6)).map((_, index) => (
-            <SnippetSkeleton key={`skeleton-${index}`} isPlayer={isPlayerActive} />
+        ? Array.from({ length: 6 }, (_, index) => (
+            <SnippetSkeleton key={`skeleton-${index}`} isPlayerActive={isPlayerActive} />
           ))
-        : searchQuery?.data?.items.map(item => (
+        : searchQuery?.data?.items?.map(item => (
             <Snippet
               key={item.id.videoId || item.id.channelId}
               id={item.id}
@@ -28,11 +35,9 @@ const Contents = () => {
               kind={item.kind}
               snippet={item.snippet}
               onClick={choiceHandler}
-              isPlayer={isPlayerActive}
+              isPlayerActive={isPlayerActive}
             />
           ))}
     </div>
   )
 }
-
-export default Contents

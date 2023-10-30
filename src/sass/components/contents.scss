@@ -5,7 +5,7 @@
   max-width: 110rem;
   width: 100%;
 
-  &--with-player {
+  &--player {
     width: 50rem;
 
     @include respond(tab-port) {

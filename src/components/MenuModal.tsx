@@ -1,15 +1,16 @@
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
-import Modal from './ui/Modal'
+import { Modal } from './ui/Modal'
 
-interface IMenuModal {
+interface IMenuModalProps {
   show: boolean
-  onClose: (
+  onClose(
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLLIElement, MouseEvent>,
-  ) => void
+  ): void
 }
 
-const MenuModal: React.FC<IMenuModal> = ({ show, onClose }) => {
+export const MenuModal: FC<IMenuModalProps> = ({ show, onClose }) => {
   return (
     <Modal show={show} onClose={onClose}>
       <ul className='menu-modal'>
@@ -38,5 +39,3 @@ const MenuModal: React.FC<IMenuModal> = ({ show, onClose }) => {
     </Modal>
   )
 }
-
-export default MenuModal

@@ -1,3 +1,4 @@
+// We could export these consts to ".env" or ".gitlab-ci.yml" file
 export const API_KEY = 'AIzaSyBi_vwqaqk_x-YgXkcaMAFZkEkMgkhjzFQ'
 export const BASE_URL = 'https://www.googleapis.com/youtube/v3'
 export const CHANNEL_URL = 'https://www.youtube.com/channel/'

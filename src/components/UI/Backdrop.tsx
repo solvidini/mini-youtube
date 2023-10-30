@@ -1,14 +1,13 @@
-import ReactDOM from 'react-dom'
+import React from 'react'
+import { createPortal } from 'react-dom'
 
-interface IBackdrop {
+interface IBackdropProps {
   show: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-const Backdrop = ({ show, onClick }: IBackdrop) =>
-  ReactDOM.createPortal(
-    show ? <div className='backdrop' onClick={onClick}></div> : null,
+export const Backdrop = ({ show, onClick }: IBackdropProps) =>
+  createPortal(
+    show ? <div className='backdrop' onClick={onClick} /> : null,
     document.getElementById('backdrop-root') as HTMLElement,
   )
-
-export default Backdrop

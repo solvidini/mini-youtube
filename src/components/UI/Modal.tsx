@@ -1,20 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { FC, ReactNode, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 
-import Backdrop from './Backdrop'
+import { Backdrop } from './Backdrop'
 
-interface IModal {
+interface IModalProps {
   show: boolean
-  onClose: (event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>) => void
-  children: React.ReactNode
+  onClose(event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>): void
+  children: ReactNode
 }
 
-const Modal: React.FC<IModal> = ({ show, onClose, children }) => {
-  const focusModal = React.useCallback((node: HTMLDivElement) => {
+export const Modal: FC<IModalProps> = ({ show, onClose, children }) => {
+  const focusModal = useCallback((node: HTMLDivElement) => {
     if (node) node.focus()
   }, [])
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <>
       <Backdrop show={show} onClick={onClose} />
       {show && (
@@ -26,5 +26,3 @@ const Modal: React.FC<IModal> = ({ show, onClose, children }) => {
     document.getElementById('modal-root') as HTMLElement,
   )
 }
-
-export default Modal

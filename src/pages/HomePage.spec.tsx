@@ -1,9 +1,11 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
+import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { YouTubeSearchProvider } from '../contexts/search.context'
-import Home from './Home'
-import { youTubeResponse } from '../utils/search-mocks'
+import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 import nock from 'nock'
+
+import { YouTubeSearchProvider } from '../contexts/search-context'
+import { HomePage } from './HomePage'
+import { youTubeResponse } from '../utils/search-mocks'
 
 const queryClient = new QueryClient()
 
@@ -11,12 +13,12 @@ const renderWithWrapper = () =>
   render(
     <QueryClientProvider client={queryClient}>
       <YouTubeSearchProvider>
-        <Home />
+        <HomePage />
       </YouTubeSearchProvider>
     </QueryClientProvider>,
   )
 
-describe('<Home />', () => {
+describe('<HomePage />', () => {
   afterEach(() => {
     if (!nock.isDone()) {
       throw new Error(`Not all nock interceptors were used: ${JSON.stringify(nock.pendingMocks())}`)
@@ -24,7 +26,7 @@ describe('<Home />', () => {
     nock.cleanAll()
   })
 
-  test('Should render Home page with 10 snippets but without Player.', async () => {
+  test('Should render HomePage with 10 snippets but without Player.', async () => {
     const query = nock('https://www.googleapis.com')
       .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
       .get('/youtube/v3/search')

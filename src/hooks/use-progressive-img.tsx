@@ -1,9 +1,9 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 
-const useProgressiveImg = (lowQualitySrc: string, highQualitySrc: string) => {
-  const [src, setSrc] = React.useState<string>(lowQualitySrc)
+export const useProgressiveImg = (lowQualitySrc: string, highQualitySrc: string) => {
+  const [src, setSrc] = useState<string>(lowQualitySrc)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSrc(lowQualitySrc)
 
     const img = new Image()
@@ -16,5 +16,3 @@ const useProgressiveImg = (lowQualitySrc: string, highQualitySrc: string) => {
 
   return [src, { blur: src === lowQualitySrc }] as const
 }
-
-export default useProgressiveImg

@@ -1,18 +1,19 @@
-import { CHANNEL_URL, EMBED_URL } from '../api/youtube'
-import { useYouTubeSearch } from '../contexts/search.context'
-import { getDateFormat } from '../utils/utils'
+import React, { FC } from 'react'
 
-const YouTubePlayer: React.FC = () => {
+import { CHANNEL_URL, EMBED_URL } from '../config/config'
+import { useYouTubeSearch } from '../contexts/search-context'
+import { getDateFormat } from '../utils/'
+
+export const YouTubePlayer: FC = () => {
   const { selectedVideo } = useYouTubeSearch()
 
   return selectedVideo ? (
     <div className='video-content'>
       <div className='youtube-player'>
         <iframe
-          src={EMBED_URL + selectedVideo.id.videoId}
+          src={`${EMBED_URL}${selectedVideo.id.videoId}`}
           width='560'
           height='315'
-          frameBorder='0'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
           allowFullScreen
           title='Embedded YouTube video'
@@ -38,5 +39,3 @@ const YouTubePlayer: React.FC = () => {
     </div>
   ) : null
 }
-
-export default YouTubePlayer

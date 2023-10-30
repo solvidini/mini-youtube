@@ -1,5 +1,5 @@
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+import React, { FC, ReactNode } from 'react'
+
+export const Layout: FC<{ children: ReactNode }> = ({ children }) => (
   <div className='layout'>{children}</div>
 )
-
-export default Layout

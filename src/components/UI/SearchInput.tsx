@@ -1,10 +1,11 @@
+import React, { ChangeEventHandler, FC, FormEvent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
-const SearchInput: React.FC<{
+export const SearchInput: FC<{
   value: string
-  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  onChange: ChangeEventHandler<HTMLInputElement> | undefined
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void
 }> = ({ value, onChange, onSubmit }) => (
   <form className='search-input-container' onSubmit={onSubmit}>
     <input type='search' value={value} onChange={onChange} placeholder='Search...' />
@@ -13,5 +14,3 @@ const SearchInput: React.FC<{
     </button>
   </form>
 )
-
-export default SearchInput

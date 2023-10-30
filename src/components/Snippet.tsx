@@ -1,14 +1,17 @@
-import { CHANNEL_URL } from '../api/youtube'
+import React, { FC } from 'react'
+
+import { CHANNEL_URL } from '../config/config'
 import { ISearchItem } from '../api/youtube-types'
-import useProgressiveImg from '../hooks/use-progressive-img'
-import { generateClass, getDateFormat } from '../utils/utils'
+import { useProgressiveImg } from '../hooks/use-progressive-img'
+import { getDateFormat } from '../utils'
+import classNames from 'classnames'
 
 type SnippetProps = ISearchItem & {
   onClick: (itemData: ISearchItem) => void
-  isPlayer: boolean
+  isPlayerActive: boolean
 }
 
-const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => {
+export const Snippet: FC<SnippetProps> = ({ onClick, isPlayerActive, ...itemData }) => {
   const { snippet } = itemData
   const [src, { blur }] = useProgressiveImg(
     snippet?.thumbnails.default.url || '',
@@ -28,9 +31,11 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
   if (!snippet) return null
 
   return (
-    <div className={generateClass('snippet', { isPlayer })}>
+    <div className={classNames('snippet', { 'snippet--player': isPlayerActive })}>
       <div
-        className={generateClass('snippet__thumbnail', { isPlayer })}
+        className={classNames('snippet__thumbnail', {
+          'snippet__thumbnail--player': isPlayerActive,
+        })}
         onClick={handleClick}
         onKeyUp={event => {
           if (event.code === 'Enter') handleClick()
@@ -38,9 +43,9 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
         tabIndex={0}
       >
         <img
-          className={generateClass('snippet__thumbnail-img', {
-            isPlayer,
-            isChannel,
+          className={classNames('snippet__thumbnail-img', {
+            'snippet__thumbnail-img--player': isPlayerActive,
+            'snippet__thumbnail-img--channel': isChannel,
           })}
           src={src}
           style={{
@@ -50,22 +55,25 @@ const Snippet: React.FC<SnippetProps> = ({ onClick, isPlayer, ...itemData }) => 
         />
       </div>
       <div className='snippet__content'>
-        <h3 className={generateClass('snippet__title', { isPlayer })} onClick={handleClick}>
+        <h3
+          className={classNames('snippet__title', { 'snippet__title--player': isPlayerActive })}
+          onClick={handleClick}
+        >
           {snippet.title}
         </h3>
         <p className='snippet__date'>{getDateFormat(snippet.publishTime)}</p>
         <a
           href={CHANNEL_URL + snippet.channelId}
           target='_blank'
-          className={generateClass('snippet__channel', { isPlayer })}
+          className={classNames('snippet__channel', {
+            'snippet__channel--channel': isPlayerActive,
+          })}
           rel='noreferrer'
         >
           {snippet.channelTitle}
         </a>
-        {!isPlayer && <p className='snippet__description'>{snippet.description}</p>}
+        {!isPlayerActive && <p className='snippet__description'>{snippet.description}</p>}
       </div>
     </div>
   )
 }
-
-export default Snippet

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Topbar from '../components/ui/Topbar'
-import Layout from '../containers/Layout'
 
-const Auth = () => {
-  const [credential, setCredential] = React.useState<string>('')
+import { Topbar } from '../components/ui/Topbar'
+import { Layout } from '../containers/Layout'
 
-  const handleCredentialChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+// Dummy Auth Page
+export const AuthPage = () => {
+  const [credential, setCredential] = useState<string>('')
+
+  const handleCredentialChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCredential(event.target.value)
   }
 
@@ -40,5 +42,3 @@ const Auth = () => {
     </Layout>
   )
 }
-
-export default Auth

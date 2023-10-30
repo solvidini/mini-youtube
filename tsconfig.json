@@ -16,5 +16,5 @@
     "isolatedModules": false,
     "noEmit": true
   },
-  "include": ["src", "src/contexts/.context.tsx"]
+  "include": ["src", "src/contexts/.context.tsx", "src/.d.ts"]
 }

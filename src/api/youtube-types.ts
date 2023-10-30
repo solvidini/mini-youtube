@@ -1,3 +1,15 @@
+export interface IThumbnailProps {
+  height: number
+  width: number
+  url: string
+}
+
+export interface IThumbnail {
+  default: IThumbnailProps
+  high: IThumbnailProps
+  medium: IThumbnailProps
+}
+
 export interface ISnippet {
   channelId: string
   channelTitle: string
@@ -6,34 +18,25 @@ export interface ISnippet {
   publishTime: string
   publishedAt: string
   title: string
-  thumbnails: {
-    default: {
-      height: number
-      width: number
-      url: string
-    }
-    high: {
-      height: number
-      width: number
-      url: string
-    }
-    medium: {
-      height: number
-      width: number
-      url: string
-    }
-  }
+  thumbnails: IThumbnail
+}
+
+export type ItemID = {
+  kind: string
+  videoId?: string
+  channelId?: string
 }
 
 export interface ISearchItem {
   etag: string
-  id: {
-    kind: string
-    videoId?: string
-    channelId?: string
-  }
+  id: ItemID
   kind: string
   snippet: ISnippet
+}
+
+export interface IPageInfo {
+  resultsPerPage: number
+  totalResults: number
 }
 
 export interface ISearchResponse {
@@ -41,9 +44,6 @@ export interface ISearchResponse {
   items: ISearchItem[]
   kind: string
   nextPageToken: string
-  pageInfo: {
-    resultsPerPage: number
-    totalResults: number
-  }
+  pageInfo: IPageInfo
   regionCode: string
 }

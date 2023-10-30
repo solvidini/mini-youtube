@@ -1,13 +1,16 @@
+import React, { FC } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { generateClass } from '../utils/utils'
+import classNames from 'classnames'
 
-const SnippetSkeleton: React.FC<{ isPlayer: boolean }> = ({ isPlayer }) => (
+export const SnippetSkeleton: FC<{ isPlayerActive: boolean }> = ({ isPlayerActive }) => (
   <SkeletonTheme baseColor='#313131' highlightColor='#515151'>
-    <div className={generateClass('snippet', { isPlayer })}>
+    <div className={classNames('snippet', { 'snippet--player': isPlayerActive })}>
       <div
-        className={generateClass('snippet__thumbnail', { isPlayer })}
-        style={{ height: isPlayer ? '10rem' : 'auto', width: '100%' }}
+        className={classNames('snippet__thumbnail', {
+          'snippet__thumbnail--player': isPlayerActive,
+        })}
+        style={{ height: isPlayerActive ? '10rem' : 'auto', width: '100%' }}
       >
         <Skeleton
           containerClassName='skeleton-auto-dimensions'
@@ -15,13 +18,16 @@ const SnippetSkeleton: React.FC<{ isPlayer: boolean }> = ({ isPlayer }) => (
         />
       </div>
       <div className='snippet__content'>
-        <h3 className={generateClass('snippet__title', { isPlayer })} style={{ lineHeight: 1 }}>
+        <h3
+          className={classNames('snippet__title', { 'snippet__title--player': isPlayerActive })}
+          style={{ lineHeight: 1 }}
+        >
           <Skeleton />
         </h3>
         <p className='snippet__date' style={{ lineHeight: 1, width: '40%' }}>
           <Skeleton />
         </p>
-        {!isPlayer && (
+        {!isPlayerActive && (
           <p className='snippet__description' style={{ lineHeight: 2 }}>
             <Skeleton count={2} />
           </p>
@@ -30,5 +36,3 @@ const SnippetSkeleton: React.FC<{ isPlayer: boolean }> = ({ isPlayer }) => (
     </div>
   </SkeletonTheme>
 )
-
-export default SnippetSkeleton
